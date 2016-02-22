@@ -1,0 +1,12 @@
+{
+  "name": "tfl-tube-sign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --files \"*.html, *.css, *.js\""
+  },
+  "author": "Luke Hedger <luke.hedger@gmail.com> (http://www.level-out.com/)",
+  "license": "ISC"
+}

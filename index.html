@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        position: relative;
+        height: 380px;
+      }
+
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .image {
+        position: absolute;
+        left: 0;
+      }
+
+      .image--top {
+        top: 0;
+      }
+
+      .image--bottom {
+        bottom: 0;
+      }
+
+      .crescent {
+        fill: none;
+        stroke: #FFF;
+        stroke-width: 75px;
+        stroke-dasharray: 1005.3096491487338px; /* (2 * Math.PI * radius) */
+        stroke-dashoffset: -502.65482457px; /* ((stroke-dasharray / 2) * -1) */
+      }
+
+      .crescent--top {
+        stroke-width: 75px;
+        stroke-dashoffset: -502.65482457px; /* ((stroke-dasharray / 2) * -1) */
+        animation: dash-top 1.5s linear forwards;
+      }
+
+      .crescent--bottom {
+        stroke-width: 100px;
+        stroke-dashoffset: 0;
+        animation: dash-bottom 1.5s 1.35s linear forwards;
+      }
+
+      @keyframes dash-top {
+        to {
+          stroke-dashoffset: -1005.3096491487338px; /* (stroke-dasharra * -1) */
+        }
+      }
+
+      @keyframes dash-bottom {
+        to {
+          stroke-dashoffset: -502.65482457px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <!-- top crescent -->
+      <img class="image image--top" src="tube-top.png" />
+
+      <!-- bottom crescent -->
+      <img class="image image--bottom" src="tube-bottom.png" />
+
+      <!-- TODO - size matters? -->
+      <svg width="600" height="600"
+          viewBox="0 0 600 600"
+          xmlns="http://www.w3.org/2000/svg">
+
+        <!-- clip path definitions - used to create semicircle, won't be rendered -->
+        <defs>
+          <clipPath id="cut-off-bottom">
+            <rect x="0" y="0" width="400" height="140" />
+          </clipPath>
+
+          <clipPath id="cut-off-top">
+            <rect x="0" y="210" width="400" height="170" />
+          </clipPath>
+        </defs>
+
+        <!-- top crescent mask -->
+        <circle class="crescent crescent--top" cx="193" cy="180" r="160" clip-path="url(#cut-off-bottom)" />
+
+        <!-- bottom crescent mask -->
+        <circle class="crescent crescent--bottom" cx="193" cy="180" r="160" clip-path="url(#cut-off-top)" />
+
+      </svg>
+
+    </div>
+
+  </body>
+</html>
